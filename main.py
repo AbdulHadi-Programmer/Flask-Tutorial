@@ -27,11 +27,11 @@ def index():
 # One More page created by another route 
 # And Remember this is a routing
 @app.route('/user/')
-def user():
+def show_all_users():
     return "<h1>All User!</h1>"
 
-@app.route('/user/', methods=['GET', 'POST', 'DELETE', 'PUT'])
-def user():
+@app.route('/user/', methods=["GET", "POST", "DELETE", "PUT"])
+def manage_users():
     if request.method == "POST":
         return "<h1>Create New User!</h1>"
     elif request.method == "DELETE":
@@ -39,9 +39,10 @@ def user():
     elif request.method == "PUT":
         return "<h1>Update User!</h1>"
     else:
-        return '<h1>Show All Users:</h1>'
-
+        return "<h1>Show All Users:</h1>"
 
 @app.route('/user/<int:PostID>')
 def showblog(PostID):
     return f"<h1>Blog Number {PostID}</h1>"
+
+# Tutorial:- 33:51 time continue tomorrow:
