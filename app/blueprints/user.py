@@ -1,15 +1,25 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, redirect, url_for
 bp = Blueprint("app", __name__)
 
 
 @bp.route('/user/', methods=["GET", "POST"])
 def manage_users():
     if request.method == "POST":
-        return "<h1>Create New User!</h1>"
+        # return request.form
+        # return "<h1>Create New User!</h1>"
+        return redirect(url_for("index.html"))
     else:
-        # return "<h1>Show All Users:</h1>"
         return render_template("user/index.html")
 
+
+
+@bp.route("/user/create")
+def create():
+    return url_for("user.create")
+    # return render_template("user/create.html")
+
+
+    
 @bp.route('/user/<int:id>', methods=["DELETE", "PUT"])
 def user_id(id):
     if request.method == "DELETE":
