@@ -7,7 +7,8 @@ def manage_users():
     if request.method == "POST":
         # return request.form
         # return "<h1>Create New User!</h1>"
-        return redirect(url_for("index.html"))
+        # return redirect(url_for("index.html"))
+        return redirect(url_for("user.index"))
     else:
         return render_template("user/index.html")
 
@@ -15,11 +16,11 @@ def manage_users():
 
 @bp.route("/user/create")
 def create():
-    return url_for("user.create")
-    # return render_template("user/create.html")
+    # return url_for("app.create")   # Correct
+    # return url_for("app.user")
+    return redirect(url_for("user.index"))  # Use the correct endpoint name
 
 
-    
 @bp.route('/user/<int:id>', methods=["DELETE", "PUT"])
 def user_id(id):
     if request.method == "DELETE":
